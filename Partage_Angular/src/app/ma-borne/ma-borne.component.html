@@ -1,0 +1,74 @@
+<div *ngIf="mesBornes.length > 0" class="mt-5">
+  <h2>Mes bornes</h2>
+ 
+  <div class="row">
+    <div *ngFor="let borne of mesBornes" class="col-md-6">
+      <div class="card mb-3">
+        <div class="card-body">
+          <ng-container *ngIf="borne.moyenneNote !== null && borne.moyenneNote !== undefined; else noRating">
+            <app-Etoile [rating]="borne.moyenneNote" [readOnly]="true"></app-Etoile>
+          </ng-container>
+          <ng-template #noRating>
+            <app-Etoile [rating]="0" [readOnly]="true">Aucun commentaire pour ce Borne</app-Etoile> Aucune évaluation n'a été faite pour cette Borne
+          </ng-template>
+          <h6><strong>Numéro de la Borne: </strong>{{ borne.borneId }}</h6>
+          <h6><strong>Type de connecteur: </strong>{{ borne.typeConnecteur }}</h6>
+          <h6><strong>Puissance: </strong>{{ borne.puissance }} kW</h6>
+          <h6><strong>Adresse:</strong> {{ borne.numCivique }} {{ borne.nomRue }}, {{ borne.ville }}, {{ borne.province }}, {{ borne.codePostal }}</h6>
+         
+          <br>
+          <h4><strong>Disponibilités</strong></h4>
+          <table class="table table-bordered" *ngIf="disponibilitesMap.hasOwnProperty(borne.borneId) && disponibilitesMap[borne.borneId].length > 0; else noDisponibilites">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure Début</th>
+                <th>Heure Fin</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dispo of disponibilitesMap[borne.borneId]; let i = index">
+                <td *ngIf="!isEditing(dispo.disponibiliteId)">
+                  {{ dispo.dateDeLaSemaine | date:'yyyy-MM-dd' }}
+                </td>
+                <td *ngIf="isEditing(dispo.disponibiliteId)">
+                  <input type="date" class="form-control" [(ngModel)]="disponibilitesMap[borne.borneId][i].dateDeLaSemaine" name="dateDeLaSemaine" required>
+                </td>
+                <td *ngIf="!isEditing(dispo.disponibiliteId)">
+                  {{ dispo.heureDebut }}
+                </td>
+                <td *ngIf="isEditing(dispo.disponibiliteId)">
+                  <input type="time" class="form-control" [(ngModel)]="disponibilitesMap[borne.borneId][i].heureDebut" name="heureDebut" required>
+                </td>
+                <td *ngIf="!isEditing(dispo.disponibiliteId)">
+                  {{ dispo.heureFin }}
+                </td>
+                <td *ngIf="isEditing(dispo.disponibiliteId)">
+                  <input type="time" class="form-control" [(ngModel)]="disponibilitesMap[borne.borneId][i].heureFin" name="heureFin" required>
+                </td>
+                <td>
+                  <button class="btn btn-primary btbVert" (click)="toggleEdit(dispo.disponibiliteId)">
+                    {{ isEditing(dispo.disponibiliteId) ? 'Annuler' : 'Modifier' }}
+                  </button>
+                  <button class="btn btn-primary btbVert" *ngIf="isEditing(dispo.disponibiliteId)" (click)="saveDisponibilite(dispo)">
+                    Sauvegarder
+                  </button>
+                  <button class="btn btn-primary btbVert" (click)="deleteDisponibilite(dispo.disponibiliteId, borne.borneId)">
+                    Supprimer
+                  </button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noDisponibilites>
+            <p>Aucune disponibilité trouvée pour cette borne.</p>
+          </ng-template>
+         
+          <button class="btn btn-primary btbVert" [routerLink]="['/disponibilite', borne.borneId]">Ajouter disponibilité</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+ 

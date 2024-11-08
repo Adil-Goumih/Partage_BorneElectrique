@@ -1,0 +1,23 @@
+<div class="container mt-5">
+    <h2>Connection</h2>
+    <form (ngSubmit)="connection()" #connectionForm="ngForm" novalidate>
+      <div class="mb-3">
+        <label for="courriel" class="form-label">Courriel</label>
+        <input type="email" class="form-control" id="courriel" [(ngModel)]="connectionCourriel" name="courriel" required>
+        <div *ngIf="connectionForm.submitted && connectionForm.controls['courriel']?.errors?.['required']" class="invalid-feedback">
+          Le Courriel est requis.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="motDePasse" class="form-label">Mot de Passe</label>
+        <input type="password" class="form-control" id="motDePasse" [(ngModel)]="connectionMotDePasse" name="motDePasse" required>
+        <div *ngIf="connectionForm.submitted && connectionForm.controls['password']?.errors?.['required']" class="invalid-feedback">
+          Le mot de passe est requis.
+        </div>
+      </div>
+      <div class="button-ajouter">
+        <button type="submit" class="btn btn-primary">Se connecter</button>
+      </div>
+    </form>
+  </div>
+  

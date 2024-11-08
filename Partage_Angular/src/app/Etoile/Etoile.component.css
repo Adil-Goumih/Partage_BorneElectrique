@@ -1,0 +1,25 @@
+.star-rating {
+    display: flex;
+    cursor: pointer;
+  }
+  
+  .star-rating mat-icon {
+    font-size: 24px;
+    color: gold;
+  }
+  
+  .star-rating mat-icon.filled {
+    color: orange;
+  }
+  
+  textarea {
+    display: block;
+    width: 100%;
+    margin-top: 10px;
+    padding: 10px;
+    box-sizing: border-box;
+  }
+  
+  
+  
+  

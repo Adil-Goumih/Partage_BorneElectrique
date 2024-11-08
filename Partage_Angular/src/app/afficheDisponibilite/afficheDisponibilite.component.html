@@ -1,0 +1,31 @@
+
+<h3>Disponibilités de la borne</h3>
+
+<div *ngIf="disponibilites.length > 0; else noDisponibilites">
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Date</th>
+        <th>Heure Début</th>
+        <th>Heure Fin</th>
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let disponibilite of disponibilites">
+        <td>{{ disponibilite.dateDeLaSemaine | date:'yyyy-MM-dd' }}</td>
+        <td>{{ disponibilite.heureDebut }}</td>
+        <td>{{ disponibilite.heureFin }}</td>
+        <td>
+          <button class="btn btn-primary btbVert" >Réserver</button>
+         
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+<button class="btn btn-primary btbVert" [routerLink]="['/recherche']">Retour</button>
+
+<ng-template #noDisponibilites>
+  <p>Aucune disponibilité trouvée pour cette borne.</p>
+</ng-template>

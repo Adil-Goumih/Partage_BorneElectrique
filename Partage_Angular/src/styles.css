@@ -1,0 +1,66 @@
+@import "~bootstrap/dist/css/bootstrap.min.css";
+/* You can add global styles to this file, and also import other style files */
+header {
+    background-color: #fff;
+    color: #fff;
+    padding: 20px 0;
+  }
+  
+  header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  
+  header .logo img {
+    width: 150px;
+  }
+  
+  header nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+  }
+  
+  header nav ul li {
+    display: inline;
+  }
+  
+  header nav ul li a {
+    color: #0c0b0b;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  header .auth-buttons .btn {
+    background-color:rgb(22, 50, 107);
+    /* background-color: #007bff; */
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-left: 10px;
+    border-radius:10px;
+  }
+  
+  header .auth-buttons .btn:hover {
+    background-color:#0056b3;
+    /* #0056b3 */
+  }
+
+  .btbVert {
+    background-color:rgb(140, 195, 65);
+    color: #fff;
+    font-size: 1rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+  }
+
+  .btbVert:hover{
+    background-color:rgb(115, 158, 55);
+  }
+  

@@ -1,0 +1,99 @@
+<div class="container mt-5">
+  <h2>Rechercher une borne de recharge</h2>
+  <form (ngSubmit)="onSearch()" #searchForm="ngForm" novalidate>
+    <div class="row">
+      <div class="col-md-12 mb-3">
+        <label for="address" class="form-label">Adresse</label>
+        <input
+          type="text"
+          class="form-control"
+          id="address"
+          [(ngModel)]="address"
+          name="address"
+          placeholder="Entrez l'adresse"
+        />
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="typeConnecteur" class="form-label">Type de Connecteur</label>
+        <select
+          class="form-select"
+          id="typeConnecteur"
+          [(ngModel)]="typeConnecteur"
+          name="typeConnecteur"
+          required
+        >
+
+          <option *ngFor="let type of typeConnecteurs" [value]="type">
+            {{ type }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="puissance" class="form-label">Puissance</label>
+        <select
+          class="form-select"
+          id="puissance"
+          [(ngModel)]="puissance"
+          name="puissance"
+          required>
+        
+        <option></option>
+        <option *ngFor="let p of puissances" [value]="p">{{ p }}</option>
+        </select>
+      </div>
+      <div class="col-md-6 mb-3">
+        <label for="note" class="form-label">Note</label>
+        <select
+          class="form-select"
+          id="note"
+          [(ngModel)]="minimumNote"
+          name="note"
+          required
+        >
+          <option></option>
+          <option *ngFor="let n of notes" [value]="n">{{ n }}</option>
+        </select>
+      </div>
+      <div class="col-md-6 ms-3 form-check">
+        <input
+          type="checkbox"
+          class="form-check-input"
+          id="favoris"
+          [(ngModel)]="isFavoris"
+          name="favoris"
+        /><label for="favoris" class="form-check-label ms-1 p-2">Rechercher uniquement mes favoris</label>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary center" [disabled]="isFormValid()">Rechercher</button>
+    <!-- Message d'erreur -->
+    <div *ngIf="errorMessage" class="mt-3 alert alert-danger">
+      {{ errorMessage }}
+    </div>
+  </form>
+</div>
+
+<div *ngIf="results && results.length > 0" class="mt-5">
+  <h3>Résultats de la recherche</h3>
+  <div class="row">
+    <div *ngFor="let borne of results" class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <ng-container *ngIf="borne.moyenneNote !== null && borne.moyenneNote !== undefined; else noRating">
+            <app-Etoile [rating]="borne.moyenneNote" [readOnly]="true"></app-Etoile>
+          </ng-container>
+          <ng-template #noRating>
+            <app-Etoile [rating]=0 [readOnly]="true">Aucun commentaire pour ce Borne</app-Etoile> Aucune évaluation n'a été faite pour cette Borne
+          </ng-template>
+          <h5 class="card-title">TypeConnecteur: {{ borne.typeConnecteur }}</h5>
+          <h6 class="card-subtitle mb-2">Puissance: {{ borne.puissance }} kW</h6>
+          <p class="card-text">
+            <strong>Adresse:</strong><br>
+            {{ borne.numCivique }} {{ borne.nomRue }}, {{ borne.ville }}, {{ borne.province }} {{ borne.codePostal }}
+          </p>
+          <button class="btn btn-primary btbVert" (click)="getBorneByID(borne.borneId)" >Details</button>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>
+

@@ -1,0 +1,10 @@
+button {
+    margin-top: 10px;
+    margin-right: 10px;
+    color: #fff;
+    width: auto; 
+    background-color: rgb(140, 195, 65);
+  }
+  button[type="submit"]:hover {
+    background-color: rgb(115, 158, 55);
+  }

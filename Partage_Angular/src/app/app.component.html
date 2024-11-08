@@ -1,0 +1,43 @@
+
+  
+  <header>
+       
+    <div class="container" *ngIf="!userIsConnected">
+      <div class="logo">
+        <img src="assets/images/Logo.png"[routerLink]="['/home']" alt="ChargeHub Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>          
+          <li><a href="#">Communauté</a></li>
+          <li><a href="#">À propos</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" >
+        <button class="btn"[routerLink]="['/connection']">Connection</button>
+        <button class="btn"[routerLink]="['/inscription']">Inscription</button>
+      </div>
+    </div>
+
+    <div class="container" *ngIf="userIsConnected">
+      <div class="logo">
+        <img src="assets/images/Logo.png"[routerLink]="['/home']" alt="ChargeHub Logo">
+      </div>
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="recherche">Rechercher une borne</a></li>
+          <li><a href="borne">Ajouter une borne</a></li>
+          <li><a href="favoris"> Mes favoris</a></li>
+          <li><a href="ma-borne/"> Mes borne</a></li>
+        </ul>
+      </nav>
+      <div class="auth-buttons" >
+        <button class="btn"[routerLink]="['/home']" (click)="logout()">Déconnection</button>
+      </div>
+    </div>
+</header>
+<main>
+    <router-outlet></router-outlet>
+</main>

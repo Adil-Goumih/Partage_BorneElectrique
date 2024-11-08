@@ -1,0 +1,8 @@
+<div class="star-rating">
+  <mat-icon *ngFor="let star of stars; let i = index" 
+            (click)="setRating(i)"
+            [class.filled]="star">
+    {{ star ? 'star' : 'star_border' }}
+  </mat-icon>
+</div>
+<textarea *ngIf="!readOnly" (input)="onCommentChange($event)" placeholder="Ajouter un commentaire..."></textarea>

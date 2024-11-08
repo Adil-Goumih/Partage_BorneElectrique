@@ -1,0 +1,63 @@
+
+
+<div class="container mt-5">
+  <h2> Ajoutez votre borne de recharge</h2>
+  <form (ngSubmit)="addBorne()" #borneForm="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="typeConnecteur" class="form-label">Type de Connecteur</label>
+      <input type="text" class="form-control" id="typeConnecteur" [(ngModel)]="borne.typeConnecteur" name="typeConnecteur" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['typeConnecteur']?.errors?.['required']" class="invalid-feedback">
+        Le type de connecteur est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="puissance" class="form-label">Puissance</label>
+      <input type="number" class="form-control" id="puissance" [(ngModel)]="borne.puissance" name="puissance" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['puissance']?.errors?.['required']" class="invalid-feedback">
+        La puissance est requise.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="numCivique" class="form-label">Numéro Civique</label>
+      <input type="number" class="form-control" id="numCivique" [(ngModel)]="borne.adresse.numCivique" name="numCivique" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['numCivique']?.errors?.['required']" class="invalid-feedback">
+        Le numéro civique est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="nomRue" class="form-label">Nom de la Rue</label>
+      <input type="text" class="form-control" id="nomRue" [(ngModel)]="borne.adresse.nomRue" name="nomRue" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['nomRue']?.errors?.['required']" class="invalid-feedback">
+        Le nom de la rue est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="codePostal" class="form-label">Code Postal</label>
+      <input type="text" class="form-control" id="codePostal" [(ngModel)]="borne.adresse.codePostal" name="codePostal" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['codePostal']?.errors?.['required']" class="invalid-feedback">
+        Le code postal est requis.
+      </div>
+    </div>
+   
+    
+    <div class="mb-3">
+      <label for="ville" class="form-label">Ville</label>
+      <input type="text" class="form-control" id="ville" [(ngModel)]="borne.adresse.ville" name="ville" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['ville']?.errors?.['required']" class="invalid-feedback">
+        La ville est requise.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="province" class="form-label">Province</label>
+      <input type="text" class="form-control" id="province" [(ngModel)]="borne.adresse.province" name="province" required>
+      <div *ngIf="borneForm.submitted && borneForm.controls['province']?.errors?.['required']" class="invalid-feedback">
+        La province est requise.
+      </div>
+    </div>
+    <div class="button-ajouter">
+    <button type="submit" class="btn btn-primary">Ajouter</button>
+    <button class="btn btn-primary" [routerLink]="['/ma-borne']" >Mes bornes</button>
+  </div>
+  </form>
+</div> 
+

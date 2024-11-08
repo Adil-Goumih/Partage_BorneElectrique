@@ -1,0 +1,50 @@
+<div class="container mt-5">
+  <h2>Inscrivez-vous</h2>
+  <form (ngSubmit)="inscriptionMembre()" #inscriptionForm="ngForm" novalidate>
+    <div class="mb-3">
+      <label for="nom" class="form-label">Nom</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="inscriptionNom" name="nom" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['nom']?.errors?.['required']" class="invalid-feedback">
+        Le nom est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="prenom" class="form-label">Prenom</label>
+      <input type="text" class="form-control" id="prenom" [(ngModel)]="inscriptionPrenom" name="prenom" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['prenom']?.errors?.['required']" class="invalid-feedback">
+        Le prénom est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="userName" class="form-label">UserName</label>
+      <input type="text" class="form-control" id="userName" [(ngModel)]="inscriptionUserName" name="userName" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['userName']?.errors?.['required']" class="invalid-feedback">
+        Le UserName est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="courriel" class="form-label">Courriel</label>
+      <input type="email" class="form-control" id="courriel" [(ngModel)]="inscriptionCourriel" name="courriel" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['courriel']?.errors?.['required']" class="invalid-feedback">
+        Le courriel est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="motDePasse" class="form-label">Mot de Passe</label>
+      <input type="password" class="form-control" id="motDePasse" [(ngModel)]="inscriptionMotDePasse" name="motDePasse" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['motDePasse']?.errors?.['required']" class="invalid-feedback">
+        Le mot de passe est requis.
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="motDePasseConfirm" class="form-label">Confirmez le Mot de Passe</label>
+      <input type="password" class="form-control" id="motDePasseConfirm" [(ngModel)]="inscriptionMotDePasseConfirm" name="motDePasseConfirm" required>
+      <div *ngIf="inscriptionForm.submitted && inscriptionForm.controls['motDePasseConfirm']?.errors?.['required']" class="invalid-feedback">
+        La confirmation du mot de passe est requise.
+      </div>
+    </div>
+    <div class="button-ajouter">
+      <button type="submit" class="btn btn-primary">S'inscrire</button>
+    </div>
+  </form>
+</div>

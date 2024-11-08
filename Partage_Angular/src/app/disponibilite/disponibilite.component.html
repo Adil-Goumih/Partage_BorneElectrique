@@ -1,0 +1,16 @@
+<form (ngSubmit)="onSubmit()" #disponibiliteForm="ngForm">
+  <div>
+    <label for="dateDeLaSemaine">Date</label>
+    <input type="date" id="dateDeLaSemaine" required [(ngModel)]="disponibilite.dateDeLaSemaine" name="dateDeLaSemaine">
+  </div>
+  <div>
+    <label for="heureDebut" class="form-label">Heure de Début</label>
+    <input type="time" id="heureDebut" class="form-control" [(ngModel)]="disponibilite.heureDebut" name="heureDebut" (change)="updateHeureFin()" required>
+  </div>
+  <div>
+    <label for="heureFin" class="form-label">Heure de Fin</label>
+    <input type="time" id="heureFin" class="form-control" [(ngModel)]="disponibilite.heureFin" name="heureFin" readonly>
+  </div>
+  <button type="submit">Ajouter</button>
+  <button [routerLink]="['/ma-borne']">Retour</button>
+</form>

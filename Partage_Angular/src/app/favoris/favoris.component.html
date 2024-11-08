@@ -1,0 +1,49 @@
+<div *ngIf="favoris.length > 0" class="mt-5">
+  <h2>Mes bornes favorites</h2>
+  
+  <div class="row">
+    <div *ngFor="let borne of favoris" class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <ng-container *ngIf="borne.moyenneNote !== null && borne.moyenneNote !== undefined; else noRating">
+            <app-Etoile [rating]="borne.moyenneNote" [readOnly]="true"></app-Etoile>
+          </ng-container>
+          <ng-template #noRating>
+            <app-Etoile [rating]=0 [readOnly]="true">Aucun commentaire pour ce Borne</app-Etoile> Aucune évaluation n'a été faite pour cette Borne
+          </ng-template>
+          <h5><strong>Numero de la Borne: </strong>{{ borne.borneId }}</h5>
+          <h6><strong>Type de connecteur: </strong>{{ borne.typeConnecteur }}</h6>
+          <h6><strong>Puissance: </strong>{{ borne.puissance }} kW</h6>
+          <h6><strong>Adresse:</strong><br>{{ borne.numCivique }} {{ borne.nomRue }}, {{ borne.ville }}, {{ borne.province }}, {{ borne.codePostal }}</h6> 
+
+          <br>
+          <h4><strong>Disponibilités</strong></h4>
+          <table class="table table-bordered" *ngIf="disponibilitesMap.hasOwnProperty(borne.borneId) && disponibilitesMap[borne.borneId].length > 0; else noDisponibilites">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Heure Début</th>
+                <th>Heure Fin</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let dispo of disponibilitesMap[borne.borneId]">
+                <td>{{ dispo.dateDeLaSemaine | date:'yyyy-MM-dd' }}</td>
+                <td>{{ dispo.heureDebut }}</td>
+                <td>{{ dispo.heureFin }}</td>
+              </tr>
+            </tbody>
+          </table>
+          <ng-template #noDisponibilites>
+            <p>Aucune disponibilité trouvée pour cette borne.</p>
+          </ng-template>
+
+          <button class="btn btn-primary btbVert" (click)="supprimerFavoris(borne.favorisId)">Supprimer Favoris</button>          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div *ngIf="favoris.length === 0">
+  <p>Aucune borne favorite trouvée.</p>
+</div>

@@ -1,0 +1,49 @@
+form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9;
+  }
+  
+  /* Style des éléments du formulaire */
+  div {
+    margin-bottom: 15px;
+  }
+  
+  /* Style des labels */
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+    color: #333;
+  }
+  
+  /* Style des champs de saisie */
+  input[type="text"],
+  input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  /* Style du bouton */
+  button {
+    background-color:rgb(140, 195, 65);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+    margin-right: 10px;
+  }
+  
+  /* Style du bouton au survol */
+  button:hover {
+    background-color:rgb(115, 158, 55);
+  }

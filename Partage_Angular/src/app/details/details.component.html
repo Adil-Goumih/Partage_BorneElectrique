@@ -1,0 +1,51 @@
+
+<h3>Détails de la borne</h3>
+
+<div class="row">
+  <div *ngIf="borneData" class="col-md-4">
+    <div class="card mb-3">
+      <div class="card-body">
+        <ng-container *ngIf="borneData.moyenneNote !== null && borneData.moyenneNote !== undefined; else noRating">
+          <app-Etoile [rating]="borneData.moyenneNote" [readOnly]="true"></app-Etoile>
+        </ng-container>
+        <ng-template #noRating>
+          <app-Etoile [rating]="0" [readOnly]="true">Aucun commentaire pour ce Borne</app-Etoile> Aucune évaluation n'a été faite pour cette Borne
+        </ng-template>
+        <h5 class="card-title">TypeConnecteur: {{ borneData.typeConnecteur }}</h5>
+        <h6 class="card-subtitle mb-2">Puissance: {{ borneData.puissance }} kW</h6>
+        <p class="card-text">
+          <strong>Adresse:</strong><br>
+          {{ borneData.numCivique }} {{ borneData.nomRue }}, {{ borneData.ville }}, {{ borneData.province }} {{ borneData.codePostal }}
+        </p>
+        <app-Etoile 
+        [rating]="borneRating" 
+        (ratingChange)="updateRating($event)"
+        (commentChange)="updateComment($event)">
+      </app-Etoile>
+      <button (click)="submitEvaluation()" class="btn btn-primary ms-2 btbVert">Ajouter Évaluation</button>
+        <button (click)="ajouterFavoris(borneData.borneId)" class="btn btn-primary ms-2 btbVert">Ajouter aux Favoris</button>
+        <button  [routerLink]="['/afficheDisponibilite', borneData.borneId]" class="btn btn-primary ms-2 btbVert">Voir disponibilité</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<h3>Avis des utilisateurs</h3>
+<div class="row">
+  <div *ngIf="evaluations && evaluations.length > 0; else noEvaluations">
+    <div *ngFor="let evaluation of evaluations" class="col-md-4">
+      <div class="card mb-3">
+        <div class="card-body">
+          <app-Etoile [rating]="evaluation.Note" [readOnly]="true"></app-Etoile>
+          
+      
+          <p class="card-text">Commentaire: <br>{{ evaluation.Commentaire }}</p> 
+
+        </div>
+      </div>
+    </div>
+  </div>
+  <ng-template #noEvaluations>
+    <p>Aucune évaluation n'a été trouvée pour cette borne.</p>
+  </ng-template>
+</div>

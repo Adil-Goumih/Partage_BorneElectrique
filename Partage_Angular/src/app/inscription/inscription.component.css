@@ -1,0 +1,73 @@
+.container h2{
+    text-align: center;
+    margin-top: 0.6rem;
+    margin-bottom: 2rem;
+    font-family:sans-serif;
+    font-size: 1.2rem;
+  }
+   
+    .container {
+      width: 45%; 
+      padding: 20px; 
+      padding-bottom: 20px;
+      font-family: sans-serif;
+      margin-top: 10%;
+      margin-bottom: 10%;
+      margin-left: 27%;
+      border: 1px solid #ccc;
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      
+      
+    }
+    
+  
+    .form-group {
+      margin-bottom: 3rem; 
+      display:block;
+    }
+  
+    
+    label {
+      font-size: 1rem;
+      margin-bottom: 2px; 
+      
+    }
+    input[type="email"],
+    input[type="password"],
+    input[type="text"],
+    input[type="number"] {
+      width: 100%;
+      padding: 0.3rem;
+      font-size: 1rem;
+      border: 0.8px solid #ccc;
+      margin-top: 0.2rem;
+      margin-bottom: 1rem;
+      border-radius: 8px; 
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    }
+    
+    .invalid-feedback {
+      color: red;
+      font-size: 0.9rem;
+      margin-top: 0.2rem;
+    }
+    .button-ajouter {
+      text-align: center; 
+    }
+    button[type="submit"] {
+      background-color:rgb(140, 195, 65);
+      
+      width: 130px;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      margin-top: 1rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    
+    button[type="submit"]:hover {
+      background-color:rgb(115, 158, 55);
+    }

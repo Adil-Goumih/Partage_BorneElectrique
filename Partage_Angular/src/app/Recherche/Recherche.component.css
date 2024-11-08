@@ -1,0 +1,120 @@
+.container {
+  width: 40%;
+  padding: 20px;
+  font-family: sans-serif;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin: auto;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.container h2 {
+  text-align: center;
+  margin-top: 0.6rem;
+  margin-bottom: 2rem;
+  font-family: sans-serif;
+  font-size: 1.5rem;
+}
+
+label {
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+input,
+select {
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+input {
+  padding: 0.4rem;
+}
+
+select {
+  padding: 0.3rem;
+}
+
+.form-check-input {
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-top: 0.3rem;
+}
+
+button[type="submit"] {
+  background-color: rgb(140, 195, 65);
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+  width: auto; 
+  display: block;
+  margin-left: auto; 
+  margin-right: auto; 
+}
+
+button[type="submit"]:hover {
+  
+  background-color: rgb(115, 158, 55);
+}
+
+.alert-danger {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  padding: 0.8rem;
+}
+
+.custom-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+
+.custom-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.custom-card .card-body {
+  padding: 20px;
+}
+
+.custom-card .card-title {
+  font-size: 1.25rem;
+  font-weight: bold;
+  color: #007bff;
+}
+
+.custom-card .card-subtitle {
+  font-size: 1rem;
+  color: #6c757d;
+}
+
+.custom-card .card-text {
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.btbVert {
+  background-color: rgb(140, 195, 65);
+  color: #fff;
+  font-size: 1rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.btbVert:hover {
+  background-color: rgb(115, 158, 55);
+}
